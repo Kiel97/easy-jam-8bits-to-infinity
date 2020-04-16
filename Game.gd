@@ -25,3 +25,7 @@ func _process(_delta):
 func _on_Bin_shard_collected():
 	score += 1
 	print("Score: ", score)
+
+func _on_Bin_wrong_color():
+	print("Game over")
+	$Player.queue_free()

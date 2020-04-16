@@ -21,14 +21,20 @@ script = ExtResource( 2 )
 [node name="BlueBin" parent="Bins" instance=ExtResource( 4 )]
 modulate = Color( 0, 0, 1, 1 )
 position = Vector2( 104, 4 )
+red = false
+green = false
 
 [node name="RedBin" parent="Bins" instance=ExtResource( 4 )]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 104, 188 )
+green = false
+blue = false
 
 [node name="GreenBin" parent="Bins" instance=ExtResource( 4 )]
 modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 4, 188 )
+red = false
+blue = false
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -106,6 +112,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="shard_collected" from="Bins/WhiteBin" to="." method="_on_Bin_shard_collected"]
+[connection signal="wrong_color" from="Bins/WhiteBin" to="." method="_on_Bin_wrong_color"]
 [connection signal="shard_collected" from="Bins/BlueBin" to="." method="_on_Bin_shard_collected"]
+[connection signal="wrong_color" from="Bins/BlueBin" to="." method="_on_Bin_wrong_color"]
 [connection signal="shard_collected" from="Bins/RedBin" to="." method="_on_Bin_shard_collected"]
+[connection signal="wrong_color" from="Bins/RedBin" to="." method="_on_Bin_wrong_color"]
 [connection signal="shard_collected" from="Bins/GreenBin" to="." method="_on_Bin_shard_collected"]
+[connection signal="wrong_color" from="Bins/GreenBin" to="." method="_on_Bin_wrong_color"]
