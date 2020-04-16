@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game.gd" type="Script" id=2]
@@ -10,10 +10,6 @@ extents = Vector2( 80, 20 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 128 )
-
-[sub_resource type="PhysicsMaterial" id=3]
-friction = 0.0
-bounce = 1.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
@@ -82,7 +78,6 @@ collision_mask = 7
 [node name="Shard" parent="." instance=ExtResource( 3 )]
 position = Vector2( 32, 48 )
 collision_mask = 13
-physics_material_override = SubResource( 3 )
 contacts_reported = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
