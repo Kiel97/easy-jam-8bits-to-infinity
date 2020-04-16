@@ -115,32 +115,6 @@ rotation = 1.5708
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 collision_mask = 7
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ACCValues" type="VBoxContainer" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="X" type="Label" parent="CanvasLayer/ACCValues"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "X: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Y" type="Label" parent="CanvasLayer/ACCValues"]
-margin_top = 18.0
-margin_right = 40.0
-margin_bottom = 32.0
-text = "Y: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="shard_collected" from="Bins/WhiteBin" to="." method="_on_Bin_shard_collected"]
 [connection signal="wrong_color" from="Bins/WhiteBin" to="." method="_on_Bin_wrong_color"]
 [connection signal="shard_collected" from="Bins/BlueBin" to="." method="_on_Bin_shard_collected"]
