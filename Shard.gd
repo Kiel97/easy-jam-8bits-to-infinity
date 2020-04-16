@@ -16,15 +16,13 @@ var dormant = true
 
 func _ready():
 	randomize()
-	randomize_dormant_velocity()
+	apply_random_impulse()
 
 func _integrate_forces(state):
-	if(dormant):
-		pass
-	else:
+	if not dormant:
 		if state.linear_velocity.length() < 1:
 			dormant = true
-			randomize_dormant_velocity()
+			apply_random_impulse()
 
 func _on_Shard_body_entered(body: Node2D):
 	if body.is_in_group("player") and dormant:
@@ -45,8 +43,7 @@ func set_blue(value):
 func update_color():
 	$Polygon2D.modulate = Color(float(red), float(green), float(blue))
 
-func randomize_dormant_velocity():
-	#dormant_velocity = Vector2(rand_range(-10,10), rand_range(-10,10))
+func apply_random_impulse():
 	apply_impulse(Vector2(), Vector2(rand_range(-100,100), rand_range(-100,100)))
 
 func randomize_color():
