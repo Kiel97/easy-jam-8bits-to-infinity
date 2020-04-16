@@ -18,11 +18,11 @@ func _ready():
 	randomize()
 	randomize_dormant_velocity()
 
-func _integrate_forces(_state):
+func _integrate_forces(state):
 	if(dormant):
-		self.linear_velocity = dormant_velocity
+		state.linear_velocity = dormant_velocity
 	else:
-		if self.linear_velocity.length() < 1:
+		if state.linear_velocity.length() < 1:
 			dormant = true
 			randomize_dormant_velocity()
 
