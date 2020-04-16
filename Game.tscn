@@ -55,7 +55,7 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/NorthBorder"]
 rotation = 3.14159
 shape = SubResource( 1 )
-one_way_collision = true
+one_way_collision_margin = 0.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -67,8 +67,7 @@ collision_mask = 3
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders/SouthBorder"]
 shape = SubResource( 1 )
-one_way_collision = true
-one_way_collision_margin = 3.7
+one_way_collision_margin = 0.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -81,7 +80,7 @@ collision_mask = 3
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Borders/WestBorder"]
 rotation = -4.71238
 shape = SubResource( 2 )
-one_way_collision = true
+one_way_collision_margin = 0.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -94,7 +93,7 @@ collision_mask = 3
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Borders/EastBorder"]
 rotation = -1.57079
 shape = SubResource( 2 )
-one_way_collision = true
+one_way_collision_margin = 0.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -113,28 +112,6 @@ position = Vector2( 4, 4 )
 rotation = 1.5708
 
 [node name="Junk" type="Node2D" parent="."]
-
-[node name="Shard" parent="Junk" instance=ExtResource( 3 )]
-position = Vector2( 32, 48 )
-contacts_reported = 2
-
-[node name="Shard2" parent="Junk" instance=ExtResource( 3 )]
-position = Vector2( 68, 48 )
-contacts_reported = 2
-red = false
-green = false
-
-[node name="Shard3" parent="Junk" instance=ExtResource( 3 )]
-position = Vector2( 80, 100 )
-contacts_reported = 2
-green = false
-blue = false
-
-[node name="Shard4" parent="Junk" instance=ExtResource( 3 )]
-position = Vector2( 40, 136 )
-contacts_reported = 2
-red = false
-blue = false
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 collision_mask = 7
