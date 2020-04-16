@@ -9,10 +9,10 @@ friction = 0.0
 bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 60, 8 )
+extents = Vector2( 80, 20 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 104 )
+extents = Vector2( 20, 128 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
@@ -55,6 +55,7 @@ position = Vector2( 56, -8 )
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, -12 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
@@ -62,6 +63,7 @@ position = Vector2( 56, 200 )
 collision_layer = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 0, 12 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
@@ -69,6 +71,7 @@ position = Vector2( -8, 96 )
 collision_layer = 4
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2( -12, 0 )
 shape = SubResource( 2 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
@@ -76,4 +79,5 @@ position = Vector2( 116, 96 )
 collision_layer = 4
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2( 16, 0 )
 shape = SubResource( 2 )
