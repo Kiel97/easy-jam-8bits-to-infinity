@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://square8x8.png" type="Texture" id=1]
+[ext_resource path="res://Shard.gd" type="Script" id=2]
+
+[node name="Shard" type="RigidBody2D"]
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 0, -16, -8, 0, 0, 16, 8, 0 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 0, -16, -8, 0, 0, 16, 8, 0 )
