@@ -20,7 +20,8 @@ func _ready():
 
 func _integrate_forces(state):
 	if not dormant:
-		if state.linear_velocity.length() < 1:
+		if state.linear_velocity.length() < 10:
+			print("Dormant")
 			dormant = true
 			apply_random_impulse()
 
@@ -44,7 +45,7 @@ func update_color():
 	$Polygon2D.modulate = Color(float(red), float(green), float(blue))
 
 func apply_random_impulse():
-	apply_impulse(Vector2(), Vector2(rand_range(-100,100), rand_range(-100,100)))
+	apply_impulse(Vector2(), Vector2(rand_range(-45,45), rand_range(-45,45)))
 
 func randomize_color():
 	var chosen = AVAILABLE_COLORS.values()[randi() % AVAILABLE_COLORS.size()]
