@@ -14,7 +14,6 @@ func _integrate_forces(_state):
 func _on_Shard_body_entered(body: Node2D):
 	if body.is_in_group("player") and dormant:
 		dormant = false
-		print("+1")
 
 func set_red(value):
 	red = value
@@ -31,4 +30,9 @@ func set_blue(value):
 func update_color():
 	$Polygon2D.modulate = Color(float(red), float(green), float(blue))
 
-
+func _on_VisibilityNotifier2D_screen_exited():
+	if not dormant:
+		print("-1")
+	else:
+		print("0")
+	self.queue_free()
