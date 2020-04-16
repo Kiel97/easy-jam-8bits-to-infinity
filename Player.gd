@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-const MOUSE_FOLLOW_SPEED = 1.2
-const ACC_FOLLOW_SPEED = 22
+const MOUSE_FOLLOW_SPEED = 2.4
+const ACC_FOLLOW_SPEED = 24
 
 const ACC_Y_CORRECTION = 0
 
