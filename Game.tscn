@@ -83,26 +83,22 @@ collision_mask = 7
 
 [node name="Shard" parent="." instance=ExtResource( 3 )]
 position = Vector2( 32, 48 )
-collision_mask = 15
 contacts_reported = 2
 
 [node name="Shard2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 68, 48 )
-collision_mask = 15
 contacts_reported = 2
 red = false
 green = false
 
 [node name="Shard3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 80, 100 )
-collision_mask = 15
 contacts_reported = 2
 green = false
 blue = false
 
 [node name="Shard4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 40, 136 )
-collision_mask = 15
 contacts_reported = 2
 red = false
 blue = false

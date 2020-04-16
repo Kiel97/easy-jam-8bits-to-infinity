@@ -30,3 +30,4 @@ func _on_Bin_shard_collected():
 func _on_Bin_wrong_color():
 	print("Game over")
 	$Player.queue_free()
+	print("Your score is: ", score)
