@@ -11,9 +11,10 @@ func _on_Bin_body_entered(body):
 	if body.is_in_group("shard"):
 		if body.get_color() == $Sprite.modulate:
 			emit_signal("shard_collected")
-		else:
+			body.queue_free()
+		elif not body.dormant:
 			emit_signal("wrong_color")
-		body.queue_free()
+			body.queue_free()
 
 func set_red(value):
 	red = value
