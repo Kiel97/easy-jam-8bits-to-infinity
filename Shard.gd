@@ -38,11 +38,6 @@ func set_blue(value):
 func update_color():
 	$Polygon2D.modulate = Color(float(red), float(green), float(blue))
 
-func _on_VisibilityNotifier2D_screen_exited():
-	if dormant:
-		print("Untouched")
-	self.queue_free()
-
 func get_color() -> Color:
 	return Color(float(red), float(green), float(blue))
 
