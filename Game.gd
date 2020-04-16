@@ -14,6 +14,7 @@ func _ready():
 	randomize()
 	accXlabel.visible = OS.get_name() == 'Android' and DEBUG_ACC
 	accYlabel.visible = OS.get_name() == 'Android' and DEBUG_ACC
+	get_viewport().warp_mouse($Player.position)
 
 func _process(_delta):
 	var acc: Vector3 = Input.get_accelerometer()
