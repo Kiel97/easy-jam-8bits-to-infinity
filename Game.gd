@@ -45,6 +45,3 @@ func _on_JunkTimer_timeout():
 	direction += rand_range(-PI / 4, PI / 4)
 	junk.rotation = direction
 	junk.randomize_color()
-#	junk.collision_mask = 11
-#	yield(get_tree().create_timer(3.0), "timeout")
-#	junk.collision_mask = 15
