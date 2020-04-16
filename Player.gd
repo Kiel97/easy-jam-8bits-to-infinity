@@ -7,8 +7,11 @@ const ACC_Y_CORRECTION = 0
 
 var velocity
 
-onready var os: String = OS.get_name()
+export var red: bool = true setget set_red
+export var green: bool = true setget set_green
+export var blue: bool = true setget set_blue
 
+onready var os: String = OS.get_name()
 
 func _integrate_forces(state):
 	if (os == 'Android' or os == 'iOS'):
@@ -21,3 +24,18 @@ func _integrate_forces(state):
 		velocity = Vector2(distance_x, distance_y)
 		
 		state.linear_velocity = velocity * MOUSE_FOLLOW_SPEED
+
+func set_red(value):
+	red = value
+	call_deferred("update_color")
+
+func set_green(value):
+	green = value
+	call_deferred("update_color")
+
+func set_blue(value):
+	blue = value
+	call_deferred("update_color")
+
+func update_color():
+	$Sprite.modulate = Color(float(red), float(green), float(blue))
