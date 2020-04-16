@@ -38,6 +38,7 @@ window/stretch/aspect="keep"
 2d_render/layer_1="player"
 2d_render/layer_2="shard"
 2d_render/layer_3="game_border"
+2d_render/layer_4="bin"
 
 [physics]
 

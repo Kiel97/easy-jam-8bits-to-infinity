@@ -31,8 +31,6 @@ func update_color():
 	$Polygon2D.modulate = Color(float(red), float(green), float(blue))
 
 func _on_VisibilityNotifier2D_screen_exited():
-	if not dormant:
-		print("-1")
-	else:
-		print("0")
+	if dormant:
+		print("Untouched")
 	self.queue_free()

@@ -1,5 +1,7 @@
 extends Node2D
 
+var score: int = 0
+
 const DEBUG_ACC = false
 
 const ACC_ERROR_MARGIN = 0.1
@@ -18,3 +20,8 @@ func _process(_delta):
 	if (OS.get_name() == 'Android' and DEBUG_ACC):
 		accXlabel.text = "X: " + str(round(acc.x))
 		accYlabel.text = "Y: " + str(round(-(acc.y + AXIS_Y_CORRECTION)))
+
+
+func _on_Bin_shard_collected():
+	score += 1
+	print("Score: ", score)
