@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game.gd" type="Script" id=2]
 [ext_resource path="res://Shard.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Bin.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PhysicsMaterial" id=3]
 friction = 0.0
@@ -23,6 +24,7 @@ collision_mask = 7
 [node name="Shard" parent="." instance=ExtResource( 3 )]
 position = Vector2( 32, 48 )
 physics_material_override = SubResource( 3 )
+contacts_reported = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -91,3 +93,23 @@ shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Bins" type="Node2D" parent="."]
+
+[node name="WhiteBin" parent="Bins" instance=ExtResource( 4 )]
+
+[node name="BlueBin" parent="Bins" instance=ExtResource( 4 )]
+modulate = Color( 0, 0, 1, 1 )
+position = Vector2( 104, 4 )
+
+[node name="RedBin" parent="Bins" instance=ExtResource( 4 )]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 104, 188 )
+
+[node name="GreenBin" parent="Bins" instance=ExtResource( 4 )]
+modulate = Color( 0, 1, 0, 1 )
+position = Vector2( 4, 188 )
+[connection signal="shard_collected" from="Bins/WhiteBin" to="." method="_on_Bin_shard_collected"]
+[connection signal="shard_collected" from="Bins/BlueBin" to="." method="_on_Bin_shard_collected"]
+[connection signal="shard_collected" from="Bins/RedBin" to="." method="_on_Bin_shard_collected"]
+[connection signal="shard_collected" from="Bins/GreenBin" to="." method="_on_Bin_shard_collected"]
