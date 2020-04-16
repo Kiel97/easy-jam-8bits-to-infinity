@@ -4,8 +4,12 @@ export var red: bool = true setget set_red
 export var green: bool = true setget set_green
 export var blue: bool = true setget set_blue
 
-var dormant_velocity: Vector2 = Vector2(10, 10)
+var dormant_velocity: Vector2
 var dormant = true
+
+func _ready():
+	randomize()
+	dormant_velocity = Vector2(rand_range(-10,10), rand_range(-10,10))
 
 func _integrate_forces(_state):
 	if(dormant):

@@ -11,6 +11,7 @@ onready var accXlabel: Label = $CanvasLayer/ACCValues/X
 onready var accYlabel: Label = $CanvasLayer/ACCValues/Y
 
 func _ready():
+	randomize()
 	accXlabel.visible = OS.get_name() == 'Android' and DEBUG_ACC
 	accYlabel.visible = OS.get_name() == 'Android' and DEBUG_ACC
 
