@@ -4,6 +4,8 @@
 [ext_resource path="res://Shard.gd" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=1]
+friction = 0.5
+bounce = 0.6
 
 [node name="Shard" type="RigidBody2D" groups=[
 "shard",

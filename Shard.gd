@@ -9,11 +9,15 @@ var dormant = true
 
 func _ready():
 	randomize()
-	dormant_velocity = Vector2(rand_range(-10,10), rand_range(-10,10))
+	randomize_dormant_velocity()
 
 func _integrate_forces(_state):
 	if(dormant):
 		self.linear_velocity = dormant_velocity
+	else:
+		if self.linear_velocity.length() < 1:
+			dormant = true
+			randomize_dormant_velocity()
 
 func _on_Shard_body_entered(body: Node2D):
 	if body.is_in_group("player") and dormant:
@@ -41,3 +45,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func get_color() -> Color:
 	return Color(float(red), float(green), float(blue))
+
+func randomize_dormant_velocity():
+	dormant_velocity = Vector2(rand_range(-10,10), rand_range(-10,10))
