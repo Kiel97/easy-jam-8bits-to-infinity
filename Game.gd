@@ -8,17 +8,7 @@ export var junks: Array = [load("res://Shard.tscn")]
 func _ready():
 	randomize()
 	get_viewport().warp_mouse($Player.position)
-
-func _on_Bin_shard_collected():
-	score += 1
-	print("Score: ", score)
-
-func _on_Bin_wrong_color():
-	print("Game over")
-	if ($Player):
-		$Player.queue_free()
-		self.is_playing = false
-	print("Your score is: ", score)
+	$Player.visible = false
 
 func _on_JunkTimer_timeout():
 	$JunkGenerator/JunkPath/JunkPathSpawner.offset = randi()
@@ -38,3 +28,28 @@ func playing(value):
 	else:
 		$JunkGenerator/JunkTimer.autostart = true
 		$JunkGenerator/JunkTimer.start()
+
+func new_game():
+	$CanvasLayer/Control/TextureButton.visible = false
+	for child in $Junk.get_children():
+		child.queue_free()
+	score = 0
+	$Player.visible = true
+	is_playing = true
+
+func game_over():
+	print("Game over")
+	$Player.visible = false
+	self.is_playing = false
+	$CanvasLayer/Control/TextureButton.visible = true
+	print("Your score is: ", score)
+
+func _on_TextureButton_pressed():
+	new_game()
+
+func _on_Bin_shard_collected():
+	score += 1
+	print("Score: ", score)
+
+func _on_Bin_wrong_color():
+	game_over()
