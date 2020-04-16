@@ -5,52 +5,34 @@
 [ext_resource path="res://Shard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Bin.tscn" type="PackedScene" id=4]
 
-[sub_resource type="PhysicsMaterial" id=3]
-friction = 0.0
-bounce = 1.0
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80, 20 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 128 )
 
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 0.0
+bounce = 1.0
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-collision_mask = 7
+[node name="Bins" type="Node2D" parent="."]
 
-[node name="Shard" parent="." instance=ExtResource( 3 )]
-position = Vector2( 32, 48 )
-physics_material_override = SubResource( 3 )
-contacts_reported = 2
+[node name="WhiteBin" parent="Bins" instance=ExtResource( 4 )]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="BlueBin" parent="Bins" instance=ExtResource( 4 )]
+modulate = Color( 0, 0, 1, 1 )
+position = Vector2( 104, 4 )
 
-[node name="ACCValues" type="VBoxContainer" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="RedBin" parent="Bins" instance=ExtResource( 4 )]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 104, 188 )
 
-[node name="X" type="Label" parent="CanvasLayer/ACCValues"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "X: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Y" type="Label" parent="CanvasLayer/ACCValues"]
-margin_top = 18.0
-margin_right = 40.0
-margin_bottom = 32.0
-text = "Y: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="GreenBin" parent="Bins" instance=ExtResource( 4 )]
+modulate = Color( 0, 1, 0, 1 )
+position = Vector2( 4, 188 )
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -94,21 +76,40 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Bins" type="Node2D" parent="."]
+[node name="Player" parent="." instance=ExtResource( 1 )]
+collision_mask = 7
 
-[node name="WhiteBin" parent="Bins" instance=ExtResource( 4 )]
+[node name="Shard" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 48 )
+collision_mask = 13
+physics_material_override = SubResource( 3 )
+contacts_reported = 2
 
-[node name="BlueBin" parent="Bins" instance=ExtResource( 4 )]
-modulate = Color( 0, 0, 1, 1 )
-position = Vector2( 104, 4 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="RedBin" parent="Bins" instance=ExtResource( 4 )]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 104, 188 )
+[node name="ACCValues" type="VBoxContainer" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="GreenBin" parent="Bins" instance=ExtResource( 4 )]
-modulate = Color( 0, 1, 0, 1 )
-position = Vector2( 4, 188 )
+[node name="X" type="Label" parent="CanvasLayer/ACCValues"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "X: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Y" type="Label" parent="CanvasLayer/ACCValues"]
+margin_top = 18.0
+margin_right = 40.0
+margin_bottom = 32.0
+text = "Y: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="shard_collected" from="Bins/WhiteBin" to="." method="_on_Bin_shard_collected"]
 [connection signal="shard_collected" from="Bins/BlueBin" to="." method="_on_Bin_shard_collected"]
 [connection signal="shard_collected" from="Bins/RedBin" to="." method="_on_Bin_shard_collected"]
