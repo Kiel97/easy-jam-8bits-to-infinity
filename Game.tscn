@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game.gd" type="Script" id=2]
+[ext_resource path="res://Shard.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 8 )
@@ -13,6 +14,11 @@ extents = Vector2( 8, 104 )
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+collision_mask = 7
+
+[node name="Shard" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 48 )
+collision_layer = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -42,24 +48,28 @@ __meta__ = {
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 56, -8 )
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 1 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2( 56, 200 )
+collision_layer = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource( 1 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 position = Vector2( -8, 96 )
+collision_layer = 4
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D3"]
 shape = SubResource( 2 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
 position = Vector2( 116, 96 )
+collision_layer = 4
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D4"]
 shape = SubResource( 2 )
