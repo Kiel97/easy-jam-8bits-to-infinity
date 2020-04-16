@@ -101,7 +101,7 @@ __meta__ = {
 [node name="JunkGenerator" type="Node2D" parent="."]
 
 [node name="JunkTimer" type="Timer" parent="JunkGenerator"]
-wait_time = 4.0
+wait_time = 5.0
 autostart = true
 
 [node name="JunkPath" type="Path2D" parent="JunkGenerator"]
