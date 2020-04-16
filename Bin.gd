@@ -9,7 +9,7 @@ export var blue: bool = true setget set_blue
 
 func _on_Bin_body_entered(body):
 	if body.is_in_group("shard"):
-		if body.get_color() == $Sprite.modulate:
+		if body.get_color() == $Sprite.modulate and not body.dormant:
 			emit_signal("shard_collected")
 			body.queue_free()
 		elif not body.dormant:

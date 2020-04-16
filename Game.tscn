@@ -13,11 +13,15 @@ extents = Vector2( 128, 20 )
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array(  )
+"points": PoolVector2Array( 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 4, 188, 0, 0, 0, 0, 104, 188, 0, 0, 0, 0, 104, 4, 0, 0, 0, 0, 4, 4 )
 }
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+junks = [ ExtResource( 3 ) ]
 
 [node name="Bins" type="Node2D" parent="."]
 
@@ -46,6 +50,7 @@ blue = false
 [node name="NorthBorder" type="StaticBody2D" parent="Borders"]
 position = Vector2( 56, -20 )
 collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/NorthBorder"]
 rotation = 3.14159
@@ -58,6 +63,7 @@ __meta__ = {
 [node name="SouthBorder" type="StaticBody2D" parent="Borders"]
 position = Vector2( 56, 212 )
 collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders/SouthBorder"]
 shape = SubResource( 1 )
@@ -70,6 +76,7 @@ __meta__ = {
 [node name="WestBorder" type="StaticBody2D" parent="Borders"]
 position = Vector2( -20, 96 )
 collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Borders/WestBorder"]
 rotation = -4.71238
@@ -82,6 +89,7 @@ __meta__ = {
 [node name="EastBorder" type="StaticBody2D" parent="Borders"]
 position = Vector2( 128, 96 )
 collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Borders/EastBorder"]
 rotation = -1.57079
@@ -95,9 +103,14 @@ __meta__ = {
 
 [node name="JunkTimer" type="Timer" parent="JunkGenerator"]
 wait_time = 4.0
+autostart = true
 
-[node name="Path2D" type="Path2D" parent="JunkGenerator"]
+[node name="JunkPath" type="Path2D" parent="JunkGenerator"]
 curve = SubResource( 3 )
+
+[node name="JunkPathSpawner" type="PathFollow2D" parent="JunkGenerator/JunkPath"]
+position = Vector2( 4, 4 )
+rotation = 1.5708
 
 [node name="Junk" type="Node2D" parent="."]
 
@@ -159,3 +172,4 @@ __meta__ = {
 [connection signal="wrong_color" from="Bins/RedBin" to="." method="_on_Bin_wrong_color"]
 [connection signal="shard_collected" from="Bins/GreenBin" to="." method="_on_Bin_shard_collected"]
 [connection signal="wrong_color" from="Bins/GreenBin" to="." method="_on_Bin_wrong_color"]
+[connection signal="timeout" from="JunkGenerator/JunkTimer" to="." method="_on_JunkTimer_timeout"]
