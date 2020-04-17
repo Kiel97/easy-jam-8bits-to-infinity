@@ -44,3 +44,6 @@ func set_blue(value):
 
 func update_color():
 	$Sprite.modulate = Color(float(red), float(green), float(blue))
+
+func _on_Player_body_entered(body):
+	$BounceSound.play()
