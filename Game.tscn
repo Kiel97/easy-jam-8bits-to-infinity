@@ -394,7 +394,13 @@ text = "This game was made by Kiel (Krzysztof Kielczewski) for Easy Jam (8-bits 
 
 - I pixel you Font by rodrigosrtz (https://www.dafont.com/i-pixel-u.font) - unknown license, but the website states it's 100% free
 
-- White Square 8x8 sprite by me during game jam"
+- White Square 8x8 sprite by me during game jam
+
+- Player 8x8 sprite by me during game jam
+
+- Bin 8x8 sprite by me during game jam
+
+- Strips 8x8 sprite by me during game jam"
 __meta__ = {
 "_edit_use_anchors_": false
 }
