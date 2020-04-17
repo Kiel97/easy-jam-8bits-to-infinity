@@ -1,7 +1,7 @@
 extends Node2D
 
 var score: int = 0 setget set_score
-var is_playing: bool = true setget playing
+var is_playing: bool = false setget playing
 
 var highscore: int = 0
 var highscore_path: String = "user://gchiscore.txt"
@@ -24,10 +24,10 @@ export var junks: Array = [load("res://Shard.tscn")]
 
 func _ready():
 	randomize()
+	self.is_playing = false
 	print(OS.get_user_data_dir())
 	load_highscore()
 	assert(junks.size() >= 1)
-	$Player.visible = false
 
 func _on_JunkTimer_timeout():
 	spawn_random_junk()
@@ -36,9 +36,11 @@ func playing(value):
 	is_playing = value
 	if not is_playing:
 		junk_timer.autostart = false
+		$Player.visible = false
 		junk_timer.stop()
 	else:
 		junk_timer.autostart = true
+		$Player.visible = true
 		junk_timer.start()
 
 func new_game():
@@ -47,7 +49,6 @@ func new_game():
 	for child in $Junk.get_children():
 		child.queue_free()
 	self.score = 0
-	$Player.visible = true
 	get_viewport().warp_mouse($Player.position)
 	
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
@@ -79,7 +80,6 @@ func spawn_random_junk():
 
 func game_over():
 	print("Game over")
-	$Player.visible = false
 	self.is_playing = false
 	tap_overlay.visible = true
 	print("Your score is: ", score)
