@@ -6,6 +6,7 @@ var is_playing: bool = true setget playing
 onready var spawn_point: PathFollow2D = $JunkGenerator/JunkPath/JunkPathSpawner
 onready var junk_timer: Timer = $JunkGenerator/JunkTimer
 onready var tap_button: TextureButton = $CanvasLayer/Control/TapButton
+onready var tap_label: Label = $CanvasLayer/Control/TapLabel
 
 export var junks: Array = [load("res://Shard.tscn")]
 
@@ -28,6 +29,7 @@ func playing(value):
 
 func new_game():
 	tap_button.visible = false
+	tap_label.visible = false
 	for child in $Junk.get_children():
 		child.queue_free()
 	score = 0
@@ -50,6 +52,7 @@ func game_over():
 	$Player.visible = false
 	self.is_playing = false
 	tap_button.visible = true
+	tap_label.visible = true
 	print("Your score is: ", score)
 
 func _on_TextureButton_pressed():
