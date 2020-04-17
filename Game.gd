@@ -115,9 +115,11 @@ func _on_TapButton_pressed():
 
 func _on_Bin_shard_collected():
 	self.score += 1
+	$Bins/CollectedSound.play()
 	print("Score: ", score)
 
 func _on_Bin_wrong_color():
+	$Bins/WrongSound.play()
 	game_over()
 
 func _on_CreditsButton_pressed():

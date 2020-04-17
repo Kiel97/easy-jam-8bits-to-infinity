@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://I-pixel-u.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://white_slider.tres" type="StyleBox" id=7]
 [ext_resource path="res://black_background.tres" type="StyleBox" id=8]
+[ext_resource path="res://Collected.ogg" type="AudioStream" id=9]
+[ext_resource path="res://WrongBin.ogg" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80, 20 )
@@ -115,6 +117,12 @@ modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 4, 188 )
 red = false
 blue = false
+
+[node name="CollectedSound" type="AudioStreamPlayer" parent="Bins"]
+stream = ExtResource( 9 )
+
+[node name="WrongSound" type="AudioStreamPlayer" parent="Bins"]
+stream = ExtResource( 10 )
 
 [node name="Borders" type="Node2D" parent="."]
 
