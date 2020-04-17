@@ -172,14 +172,14 @@ collision_mask = 7
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TapOverlay" type="Control" parent="CanvasLayer"]
+[node name="MainOverlay" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TapButton" type="TextureButton" parent="CanvasLayer/TapOverlay"]
+[node name="TapButton" type="TextureButton" parent="CanvasLayer/MainOverlay"]
 modulate = Color( 0.196078, 0.196078, 0.196078, 0.588235 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -193,14 +193,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopVBox" type="VBoxContainer" parent="CanvasLayer/TapOverlay"]
+[node name="TopVBox" type="VBoxContainer" parent="CanvasLayer/MainOverlay"]
 anchor_right = 1.0
 margin_bottom = 30.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/TapOverlay/TopVBox"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MainOverlay/TopVBox"]
 margin_right = 108.0
 margin_bottom = 30.0
 custom_fonts/font = SubResource( 4 )
@@ -211,7 +211,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/TapOverlay/TopVBox"]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/MainOverlay/TopVBox"]
 margin_top = 34.0
 margin_right = 108.0
 margin_bottom = 41.0
@@ -223,7 +223,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HighscoreLabel" type="Label" parent="CanvasLayer/TapOverlay/TopVBox"]
+[node name="HighscoreLabel" type="Label" parent="CanvasLayer/MainOverlay/TopVBox"]
 margin_top = 45.0
 margin_right = 108.0
 margin_bottom = 52.0
@@ -235,7 +235,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MidVBox" type="VBoxContainer" parent="CanvasLayer/TapOverlay"]
+[node name="MidVBox" type="VBoxContainer" parent="CanvasLayer/MainOverlay"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -245,7 +245,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TapLabel" type="Label" parent="CanvasLayer/TapOverlay/MidVBox"]
+[node name="TapLabel" type="Label" parent="CanvasLayer/MainOverlay/MidVBox"]
 margin_right = 108.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 6 )
@@ -256,7 +256,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BottomVBox" type="VBoxContainer" parent="CanvasLayer/TapOverlay"]
+[node name="BottomVBox" type="VBoxContainer" parent="CanvasLayer/MainOverlay"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -265,23 +265,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VertBox" type="HBoxContainer" parent="CanvasLayer/TapOverlay/BottomVBox"]
+[node name="VertBox" type="HBoxContainer" parent="CanvasLayer/MainOverlay/BottomVBox"]
 margin_right = 108.0
 margin_bottom = 10.0
 
-[node name="Label" type="Label" parent="CanvasLayer/TapOverlay/BottomVBox/VertBox"]
+[node name="Label" type="Label" parent="CanvasLayer/MainOverlay/BottomVBox/VertBox"]
 margin_right = 43.0
 margin_bottom = 10.0
 custom_fonts/font = SubResource( 7 )
 text = "2020 Kiel"
 
-[node name="Control" type="Control" parent="CanvasLayer/TapOverlay/BottomVBox/VertBox"]
+[node name="Control" type="Control" parent="CanvasLayer/MainOverlay/BottomVBox/VertBox"]
 margin_left = 47.0
 margin_right = 96.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 
-[node name="CreditsButton" type="TextureButton" parent="CanvasLayer/TapOverlay/BottomVBox/VertBox"]
+[node name="CreditsButton" type="TextureButton" parent="CanvasLayer/MainOverlay/BottomVBox/VertBox"]
 margin_left = 100.0
 margin_right = 108.0
 margin_bottom = 10.0
@@ -292,7 +292,7 @@ texture_disabled = ExtResource( 5 )
 texture_focused = ExtResource( 5 )
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/TapOverlay/BottomVBox/VertBox/CreditsButton"]
+[node name="Label" type="Label" parent="CanvasLayer/MainOverlay/BottomVBox/VertBox/CreditsButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 8 )
@@ -395,7 +395,7 @@ __meta__ = {
 [connection signal="shard_collected" from="Bins/GreenBin" to="." method="_on_Bin_shard_collected"]
 [connection signal="wrong_color" from="Bins/GreenBin" to="." method="_on_Bin_wrong_color"]
 [connection signal="timeout" from="JunkGenerator/JunkTimer" to="." method="_on_JunkTimer_timeout"]
-[connection signal="pressed" from="CanvasLayer/TapOverlay/TapButton" to="." method="_on_TapButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/TapOverlay/BottomVBox/VertBox/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainOverlay/TapButton" to="." method="_on_TapButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainOverlay/BottomVBox/VertBox/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="timeout" from="CanvasLayer/ScoreGameLabel/ScoreLabelTimer" to="." method="_on_ScoreLabelTimer_timeout"]
 [connection signal="pressed" from="CanvasLayer/CreditsOverlay/TapCreditsButton" to="." method="_on_TapCreditsButton_pressed"]
