@@ -49,6 +49,10 @@ func new_game():
 	self.score = 0
 	$Player.visible = true
 	get_viewport().warp_mouse($Player.position)
+	
+	if OS.get_name() == "Android" or OS.get_name() == "iOS":
+		var y_correction := Input.get_accelerometer().y
+		$Player.acc_y_correction = -y_correction
 
 func set_score(value):
 	score = value

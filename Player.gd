@@ -3,7 +3,7 @@ extends RigidBody2D
 const MOUSE_FOLLOW_SPEED = 2.4
 const ACC_FOLLOW_SPEED = 24
 
-const ACC_Y_CORRECTION = 0
+var acc_y_correction = 0
 
 var velocity
 
@@ -16,7 +16,8 @@ onready var os: String = OS.get_name()
 func _integrate_forces(state):
 	if (os == 'Android' or os == 'iOS'):
 		var acc: Vector3 = Input.get_accelerometer()
-		state.linear_velocity = Vector2(acc.x, -(acc.y+ACC_Y_CORRECTION)) * ACC_FOLLOW_SPEED
+		state.linear_velocity = Vector2(acc.x, -(acc.y)) * ACC_FOLLOW_SPEED
+		state.linear_velocity.y += acc_y_correction
 	else:
 		var mouse_pos = get_global_mouse_position()
 		var distance_x = (round(mouse_pos.x - self.position.x))
