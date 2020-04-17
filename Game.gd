@@ -31,6 +31,7 @@ func _ready():
 	print(OS.get_user_data_dir())
 	load_highscore()
 	assert(junks.size() >= 1)
+	$Music.play()
 
 func _on_JunkTimer_timeout():
 	spawn_random_junk()
