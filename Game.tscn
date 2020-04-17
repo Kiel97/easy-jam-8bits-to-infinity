@@ -25,7 +25,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 14
+size = 10
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_top = -3
@@ -194,7 +194,7 @@ __meta__ = {
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/TapOverlay/TopVBox"]
 margin_top = 34.0
 margin_right = 108.0
-margin_bottom = 46.0
+margin_bottom = 41.0
 custom_fonts/font = SubResource( 5 )
 text = "Score: 000"
 align = 1
@@ -204,9 +204,9 @@ __meta__ = {
 }
 
 [node name="HighscoreLabel" type="Label" parent="CanvasLayer/TapOverlay/TopVBox"]
-margin_top = 50.0
+margin_top = 45.0
 margin_right = 108.0
-margin_bottom = 62.0
+margin_bottom = 52.0
 custom_fonts/font = SubResource( 5 )
 text = "High: 000"
 align = 1
