@@ -1,10 +1,11 @@
 extends Node2D
 
-var score: int = 0
+var score: int = 0 setget set_score
 var is_playing: bool = true setget playing
 
 onready var spawn_point: PathFollow2D = $JunkGenerator/JunkPath/JunkPathSpawner
 onready var junk_timer: Timer = $JunkGenerator/JunkTimer
+onready var score_timer: Timer = $CanvasLayer/ScoreGameLabel/ScoreLabelTimer
 
 onready var tap_overlay: Control = $CanvasLayer/TapOverlay
 onready var tap_button: TextureButton = $CanvasLayer/TapOverlay/TapButton
@@ -12,6 +13,8 @@ onready var tap_label: Label = $CanvasLayer/TapOverlay/MidVBox/TapLabel
 onready var title_label: Label = $CanvasLayer/TapOverlay/TopVBox/TitleLabel
 onready var score_label: Label = $CanvasLayer/TapOverlay/TopVBox/ScoreLabel
 onready var hiscore_label: Label = $CanvasLayer/TapOverlay/TopVBox/HighscoreLabel
+
+onready var score_game_label: Label = $CanvasLayer/ScoreGameLabel
 
 export var junks: Array = [load("res://Shard.tscn")]
 
@@ -33,13 +36,26 @@ func playing(value):
 		junk_timer.start()
 
 func new_game():
+	self.is_playing = true
 	tap_overlay.visible = false
 	for child in $Junk.get_children():
 		child.queue_free()
-	score = 0
+	self.score = 0
 	$Player.visible = true
-	self.is_playing = true
 	get_viewport().warp_mouse($Player.position)
+
+func set_score(value):
+	score = value
+	score_game_label.text = str(score)
+	if is_playing:
+		show_score()
+
+func show_score():
+	score_game_label.visible = true
+	score_timer.start()
+
+func hide_score():
+	score_game_label.visible = false
 
 func spawn_random_junk():
 	spawn_point.offset = randi()
@@ -57,12 +73,13 @@ func game_over():
 	self.is_playing = false
 	tap_overlay.visible = true
 	print("Your score is: ", score)
+	score_label.text = "Score: " + str(score)
 
 func _on_TextureButton_pressed():
 	new_game()
 
 func _on_Bin_shard_collected():
-	score += 1
+	self.score += 1
 	print("Score: ", score)
 
 func _on_Bin_wrong_color():
@@ -70,3 +87,6 @@ func _on_Bin_wrong_color():
 
 func _on_CreditsButton_pressed():
 	print("Show credits here...")
+
+func _on_ScoreLabelTimer_timeout():
+	hide_score()

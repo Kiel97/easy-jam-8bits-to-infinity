@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game.gd" type="Script" id=2]
@@ -49,6 +49,9 @@ font_data = ExtResource( 6 )
 size = 6
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 6 )
 
 [node name="Game" type="Node2D"]
@@ -196,7 +199,7 @@ margin_top = 34.0
 margin_right = 108.0
 margin_bottom = 41.0
 custom_fonts/font = SubResource( 5 )
-text = "Score: 000"
+text = "Score: 0"
 align = 1
 valign = 1
 __meta__ = {
@@ -208,7 +211,7 @@ margin_top = 45.0
 margin_right = 108.0
 margin_bottom = 52.0
 custom_fonts/font = SubResource( 5 )
-text = "High: 000"
+text = "High: 0"
 align = 1
 valign = 1
 __meta__ = {
@@ -282,6 +285,23 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ScoreGameLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabelTimer" type="Timer" parent="CanvasLayer/ScoreGameLabel"]
+wait_time = 2.0
+one_shot = true
+
+[node name="ScoreTween" type="Tween" parent="CanvasLayer/ScoreGameLabel"]
 [connection signal="shard_collected" from="Bins/WhiteBin" to="." method="_on_Bin_shard_collected"]
 [connection signal="wrong_color" from="Bins/WhiteBin" to="." method="_on_Bin_wrong_color"]
 [connection signal="shard_collected" from="Bins/BlueBin" to="." method="_on_Bin_shard_collected"]
@@ -293,3 +313,4 @@ __meta__ = {
 [connection signal="timeout" from="JunkGenerator/JunkTimer" to="." method="_on_JunkTimer_timeout"]
 [connection signal="pressed" from="CanvasLayer/TapOverlay/TapButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/TapOverlay/BottomVBox/VertBox/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="timeout" from="CanvasLayer/ScoreGameLabel/ScoreLabelTimer" to="." method="_on_ScoreLabelTimer_timeout"]
