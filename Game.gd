@@ -102,7 +102,7 @@ func update_highscore():
 		highscore_file.close()
 	hiscore_label.text = "High: " + str(highscore)
 
-func _on_TextureButton_pressed():
+func _on_TapButton_pressed():
 	new_game()
 
 func _on_Bin_shard_collected():
