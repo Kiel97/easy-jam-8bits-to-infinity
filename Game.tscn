@@ -18,13 +18,13 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 4, 188, 0, 0, 0, 0, 104, 188, 0, 0, 0, 0, 104, 4, 0, 0, 0, 0, 4, 4 )
 }
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 24
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 14
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -32,7 +32,7 @@ extra_spacing_top = -3
 extra_spacing_bottom = -3
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 14
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -171,7 +171,7 @@ __meta__ = {
 [node name="TitleLabel" type="Label" parent="CanvasLayer/TapOverlay/TopVBox"]
 margin_right = 108.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "GC"
 align = 1
 valign = 1
@@ -183,7 +183,7 @@ __meta__ = {
 margin_top = 34.0
 margin_right = 108.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "Score: 000"
 align = 1
 valign = 1
@@ -195,8 +195,29 @@ __meta__ = {
 margin_top = 50.0
 margin_right = 108.0
 margin_bottom = 62.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "High: 000"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MidVBox" type="VBoxContainer" parent="CanvasLayer/TapOverlay"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -9.0
+margin_bottom = 9.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TapLabel" type="Label" parent="CanvasLayer/TapOverlay/MidVBox"]
+margin_right = 108.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 6 )
+text = "Tap when ready"
 align = 1
 valign = 1
 __meta__ = {
@@ -208,17 +229,6 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -18.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TapLabel" type="Label" parent="CanvasLayer/TapOverlay/BottomVBox"]
-margin_right = 108.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 4 )
-text = "Tap when ready"
-align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

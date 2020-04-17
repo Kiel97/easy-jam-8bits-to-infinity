@@ -8,7 +8,7 @@ onready var junk_timer: Timer = $JunkGenerator/JunkTimer
 
 onready var tap_overlay: Control = $CanvasLayer/TapOverlay
 onready var tap_button: TextureButton = $CanvasLayer/TapOverlay/TapButton
-onready var tap_label: Label = $CanvasLayer/TapOverlay/BottomVBox/TapLabel
+onready var tap_label: Label = $CanvasLayer/TapOverlay/MidVBox/TapLabel
 onready var title_label: Label = $CanvasLayer/TapOverlay/TopVBox/TitleLabel
 onready var score_label: Label = $CanvasLayer/TapOverlay/TopVBox/ScoreLabel
 onready var hiscore_label: Label = $CanvasLayer/TapOverlay/TopVBox/HighscoreLabel
