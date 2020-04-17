@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Collected.ogg" type="AudioStream" id=9]
 [ext_resource path="res://WrongBin.ogg" type="AudioStream" id=10]
 [ext_resource path="res://MenuClick.ogg" type="AudioStream" id=11]
+[ext_resource path="res://NewHiScore.ogg" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80, 20 )
@@ -118,12 +119,6 @@ modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 4, 188 )
 red = false
 blue = false
-
-[node name="CollectedSound" type="AudioStreamPlayer" parent="Bins"]
-stream = ExtResource( 9 )
-
-[node name="WrongSound" type="AudioStreamPlayer" parent="Bins"]
-stream = ExtResource( 10 )
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -409,7 +404,19 @@ text = "This game was made by Kiel (Krzysztof Kielczewski) for Easy Jam (8-bits 
 
 - Bin 8x8 sprite by me during game jam
 
-- Strips 8x8 sprite by me during game jam"
+- Strips 8x8 sprite by me during game jam
+
+- Punch1__001.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license
+
+- Powerup__005.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license
+
+- Footstep1__005.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license
+
+- Powerup__007.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license
+
+- Bass Drum__004.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license
+
+- Explosion1__004.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -426,8 +433,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CollectedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
 [node name="MenuClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+
+[node name="WrongSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="NewHighscoreSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
 [connection signal="shard_collected" from="Bins/WhiteBin" to="." method="_on_Bin_shard_collected"]
 [connection signal="wrong_color" from="Bins/WhiteBin" to="." method="_on_Bin_wrong_color"]
 [connection signal="shard_collected" from="Bins/BlueBin" to="." method="_on_Bin_shard_collected"]
