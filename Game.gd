@@ -36,12 +36,14 @@ func playing(value):
 	is_playing = value
 	if not is_playing:
 		junk_timer.autostart = false
-		$Player.visible = false
+		#$Player.visible = false
 		junk_timer.stop()
+		$Player.is_physics_on = false
 	else:
 		junk_timer.autostart = true
-		$Player.visible = true
+		#$Player.visible = true
 		junk_timer.start()
+		$Player.is_physics_on = true
 
 func new_game():
 	self.is_playing = true
