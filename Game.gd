@@ -111,6 +111,7 @@ func update_highscore():
 	hiscore_label.text = "High: " + str(highscore)
 
 func _on_TapButton_pressed():
+	$MenuClickSound.play()
 	new_game()
 
 func _on_Bin_shard_collected():
@@ -123,6 +124,7 @@ func _on_Bin_wrong_color():
 	game_over()
 
 func _on_CreditsButton_pressed():
+	$MenuClickSound.play()
 	main_overlay.visible = false
 	credits_overlay.visible = true
 
@@ -130,5 +132,6 @@ func _on_ScoreLabelTimer_timeout():
 	hide_score()
 
 func _on_TapCreditsButton_pressed():
+	$MenuClickSound.play()
 	credits_overlay.visible = false
 	main_overlay.visible = true
