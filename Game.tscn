@@ -390,7 +390,7 @@ margin_bottom = 104.0
 size_flags_vertical = 3
 theme = SubResource( 13 )
 custom_fonts/normal_font = SubResource( 12 )
-text = "This game uses assets:
+text = "This game was made for Easy Jam (8-bits to Infinity) and uses assets:
 
 - I pixel you Font by rodrigosrtz (https://www.dafont.com/i-pixel-u.font) - unknown license, but the website states it's 100% free"
 __meta__ = {
