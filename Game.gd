@@ -3,6 +3,10 @@ extends Node2D
 var score: int = 0 setget set_score
 var is_playing: bool = true setget playing
 
+var highscore: int = 0
+var highscore_path: String = "user://gchiscore.txt"
+var highscore_file: File = File.new()
+
 onready var spawn_point: PathFollow2D = $JunkGenerator/JunkPath/JunkPathSpawner
 onready var junk_timer: Timer = $JunkGenerator/JunkTimer
 onready var score_timer: Timer = $CanvasLayer/ScoreGameLabel/ScoreLabelTimer
@@ -20,6 +24,8 @@ export var junks: Array = [load("res://Shard.tscn")]
 
 func _ready():
 	randomize()
+	print(OS.get_user_data_dir())
+	load_highscore()
 	assert(junks.size() >= 1)
 	$Player.visible = false
 
@@ -73,7 +79,28 @@ func game_over():
 	self.is_playing = false
 	tap_overlay.visible = true
 	print("Your score is: ", score)
+	update_highscore()
 	score_label.text = "Score: " + str(score)
+
+func load_highscore():
+	if not highscore_file.file_exists(highscore_path):
+		highscore = 0
+		highscore_file.open(highscore_path, File.WRITE)
+		highscore_file.store_string(str(highscore))
+		highscore_file.close()
+	
+	highscore_file.open(highscore_path, File.READ)
+	highscore = int(highscore_file.get_as_text())
+	highscore_file.close()
+	hiscore_label.text = "High: " + str(highscore)
+
+func update_highscore():
+	if score > highscore:
+		highscore = score
+		highscore_file.open(highscore_path, File.WRITE)
+		highscore_file.store_string(str(highscore))
+		highscore_file.close()
+	hiscore_label.text = "High: " + str(highscore)
 
 func _on_TextureButton_pressed():
 	new_game()
