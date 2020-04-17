@@ -5,11 +5,13 @@ var is_playing: bool = true setget playing
 
 onready var spawn_point: PathFollow2D = $JunkGenerator/JunkPath/JunkPathSpawner
 onready var junk_timer: Timer = $JunkGenerator/JunkTimer
-onready var tap_button: TextureButton = $CanvasLayer/Control/TapButton
-onready var tap_label: Label = $CanvasLayer/Control/BottomVBox/TapLabel
-onready var title_label: Label = $CanvasLayer/Control/TopVBox/TitleLabel
-onready var score_label: Label = $CanvasLayer/Control/TopVBox/ScoreLabel
-onready var hiscore_label: Label = $CanvasLayer/Control/TopVBox/HighscoreLabel
+
+onready var tap_overlay: Control = $CanvasLayer/TapOverlay
+onready var tap_button: TextureButton = $CanvasLayer/TapOverlay/TapButton
+onready var tap_label: Label = $CanvasLayer/TapOverlay/BottomVBox/TapLabel
+onready var title_label: Label = $CanvasLayer/TapOverlay/TopVBox/TitleLabel
+onready var score_label: Label = $CanvasLayer/TapOverlay/TopVBox/ScoreLabel
+onready var hiscore_label: Label = $CanvasLayer/TapOverlay/TopVBox/HighscoreLabel
 
 export var junks: Array = [load("res://Shard.tscn")]
 
@@ -31,11 +33,7 @@ func playing(value):
 		junk_timer.start()
 
 func new_game():
-	tap_button.visible = false
-	tap_label.visible = false
-	title_label.visible = false
-	score_label.visible = false
-	hiscore_label.visible = false
+	tap_overlay.visible = false
 	for child in $Junk.get_children():
 		child.queue_free()
 	score = 0
@@ -57,11 +55,7 @@ func game_over():
 	print("Game over")
 	$Player.visible = false
 	self.is_playing = false
-	tap_button.visible = true
-	tap_label.visible = true
-	title_label.visible = true
-	score_label.visible = true
-	hiscore_label.visible = true
+	tap_overlay.visible = true
 	print("Your score is: ", score)
 
 func _on_TextureButton_pressed():
