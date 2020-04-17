@@ -123,3 +123,6 @@ func _on_CreditsButton_pressed():
 
 func _on_ScoreLabelTimer_timeout():
 	hide_score()
+
+func _on_TapCreditsButton_pressed():
+	print("Go back to menu...")
