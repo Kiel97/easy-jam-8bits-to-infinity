@@ -26,6 +26,7 @@ func _integrate_forces(state):
 			apply_random_impulse()
 
 func _on_Shard_body_entered(body: Node2D):
+	play_collision_sound()
 	if body.is_in_group("player") and dormant:
 		dormant = false
 
@@ -55,3 +56,7 @@ func randomize_color():
 
 func get_color() -> Color:
 	return Color(float(red), float(green), float(blue))
+
+func play_collision_sound():
+	$CollisionSound.pitch_scale = rand_range(0.8, 1.2)
+	$CollisionSound.play()
