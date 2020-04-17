@@ -3,6 +3,10 @@ extends Node2D
 var score: int = 0
 var is_playing: bool = true setget playing
 
+onready var spawn_point: PathFollow2D = $JunkGenerator/JunkPath/JunkPathSpawner
+onready var junk_timer: Timer = $JunkGenerator/JunkTimer
+onready var tap_button: TextureButton = $CanvasLayer/Control/TapButton
+
 export var junks: Array = [load("res://Shard.tscn")]
 
 func _ready():
@@ -11,11 +15,11 @@ func _ready():
 	$Player.visible = false
 
 func _on_JunkTimer_timeout():
-	$JunkGenerator/JunkPath/JunkPathSpawner.offset = randi()
+	spawn_point.offset = randi()
 	var junk = junks[randi() % junks.size()].instance()
 	$Junk.add_child(junk)
-	var direction = $JunkGenerator/JunkPath/JunkPathSpawner.rotation + PI / 2
-	junk.position = $JunkGenerator/JunkPath/JunkPathSpawner.position
+	var direction = spawn_point.rotation + PI / 2
+	junk.position = spawn_point.position
 	direction += rand_range(-PI / 4, PI / 4)
 	junk.rotation = direction
 	junk.randomize_color()
@@ -23,14 +27,14 @@ func _on_JunkTimer_timeout():
 func playing(value):
 	is_playing = value
 	if not is_playing:
-		$JunkGenerator/JunkTimer.autostart = false
-		$JunkGenerator/JunkTimer.stop()
+		junk_timer.autostart = false
+		junk_timer.stop()
 	else:
-		$JunkGenerator/JunkTimer.autostart = true
-		$JunkGenerator/JunkTimer.start()
+		junk_timer.autostart = true
+		junk_timer.start()
 
 func new_game():
-	$CanvasLayer/Control/TextureButton.visible = false
+	tap_button.visible = false
 	for child in $Junk.get_children():
 		child.queue_free()
 	score = 0
@@ -41,7 +45,7 @@ func game_over():
 	print("Game over")
 	$Player.visible = false
 	self.is_playing = false
-	$CanvasLayer/Control/TextureButton.visible = true
+	tap_button.visible = true
 	print("Your score is: ", score)
 
 func _on_TextureButton_pressed():
