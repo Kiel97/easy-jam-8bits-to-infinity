@@ -126,7 +126,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Control"]
+[node name="TapButton" type="TextureButton" parent="CanvasLayer/Control"]
 modulate = Color( 0.196078, 0.196078, 0.196078, 0.588235 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -148,4 +148,4 @@ __meta__ = {
 [connection signal="shard_collected" from="Bins/GreenBin" to="." method="_on_Bin_shard_collected"]
 [connection signal="wrong_color" from="Bins/GreenBin" to="." method="_on_Bin_wrong_color"]
 [connection signal="timeout" from="JunkGenerator/JunkTimer" to="." method="_on_JunkTimer_timeout"]
-[connection signal="pressed" from="CanvasLayer/Control/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/TapButton" to="." method="_on_TextureButton_pressed"]
