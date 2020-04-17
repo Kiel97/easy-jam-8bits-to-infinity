@@ -11,7 +11,7 @@ export var junks: Array = [load("res://Shard.tscn")]
 
 func _ready():
 	randomize()
-	get_viewport().warp_mouse($Player.position)
+	assert(junks.size() >= 1)
 	$Player.visible = false
 
 func _on_JunkTimer_timeout():
@@ -39,7 +39,8 @@ func new_game():
 		child.queue_free()
 	score = 0
 	$Player.visible = true
-	is_playing = true
+	self.is_playing = true
+	get_viewport().warp_mouse($Player.position)
 
 func game_over():
 	print("Game over")
