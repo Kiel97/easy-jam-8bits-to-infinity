@@ -9,7 +9,7 @@
 [ext_resource path="res://white_slider.tres" type="StyleBox" id=7]
 [ext_resource path="res://black_background.tres" type="StyleBox" id=8]
 [ext_resource path="res://Collected.ogg" type="AudioStream" id=9]
-[ext_resource path="res://WrongBin.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Lose.ogg" type="AudioStream" id=10]
 [ext_resource path="res://MenuClick.ogg" type="AudioStream" id=11]
 [ext_resource path="res://NewHiScore.ogg" type="AudioStream" id=12]
 
@@ -68,7 +68,7 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="Theme" id=13]
+[sub_resource type="Theme" id=11]
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
@@ -85,7 +85,7 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=13]
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
@@ -390,9 +390,9 @@ __meta__ = {
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 104.0
-margin_bottom = 104.0
+margin_bottom = 103.0
 size_flags_vertical = 3
-theme = SubResource( 13 )
+theme = SubResource( 11 )
 custom_fonts/normal_font = SubResource( 12 )
 text = "This game was made by Kiel (Krzysztof Kielczewski) for Easy Jam (8-bits to Infinity) and uses assets:
 
@@ -426,7 +426,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -20.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 13 )
 text = "Tap to menu"
 align = 1
 __meta__ = {
@@ -439,7 +439,7 @@ stream = ExtResource( 9 )
 [node name="MenuClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 
-[node name="WrongSound" type="AudioStreamPlayer" parent="."]
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 
 [node name="NewHighscoreSound" type="AudioStreamPlayer" parent="."]

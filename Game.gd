@@ -114,7 +114,7 @@ func update_highscore():
 		highscore_file.close()
 		$NewHighscoreSound.play()
 	else:
-		$WrongSound.play()
+		$LoseSound.play()
 	hiscore_label.text = "High: " + str(highscore)
 
 func _on_TapButton_pressed():
