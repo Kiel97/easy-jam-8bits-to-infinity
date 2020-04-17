@@ -22,7 +22,7 @@ onready var credits_overlay: Control = $CanvasLayer/CreditsOverlay
 
 onready var score_game_label: Label = $CanvasLayer/ScoreGameLabel
 
-export var junks: Array = [load("res://Shard.tscn")]
+export var junks: Array = [load("res://Junk.tscn")]
 
 func _ready():
 	randomize()
@@ -121,7 +121,7 @@ func _on_TapButton_pressed():
 	$MenuClickSound.play()
 	new_game()
 
-func _on_Bin_shard_collected():
+func _on_Bin_junk_collected():
 	self.score += 1
 	$CollectedSound.play()
 	print("Score: ", score)
