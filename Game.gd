@@ -17,6 +17,7 @@ onready var tap_label: Label = $CanvasLayer/MainOverlay/MidVBox/TapLabel
 onready var title_label: Label = $CanvasLayer/MainOverlay/TopVBox/TitleLabel
 onready var score_label: Label = $CanvasLayer/MainOverlay/TopVBox/ScoreLabel
 onready var hiscore_label: Label = $CanvasLayer/MainOverlay/TopVBox/HighscoreLabel
+onready var blink_timer: Timer = $CanvasLayer/MainOverlay/TopVBox/HighscoreLabel/OneBlinkTimer
 
 onready var credits_overlay: Control = $CanvasLayer/CreditsOverlay
 
@@ -113,6 +114,7 @@ func update_highscore():
 		highscore_file.store_string(str(highscore))
 		highscore_file.close()
 		$NewHighscoreSound.play()
+		blink_highscore_label()
 	else:
 		$LoseSound.play()
 	hiscore_label.text = "High: " + str(highscore)
@@ -141,3 +143,9 @@ func _on_TapCreditsButton_pressed():
 	$MenuClickSound.play()
 	credits_overlay.visible = false
 	main_overlay.visible = true
+
+func blink_highscore_label():
+	for i in range(6):
+		hiscore_label.visible = not hiscore_label.visible
+		blink_timer.start()
+		yield(blink_timer, "timeout")

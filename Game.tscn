@@ -254,6 +254,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="OneBlinkTimer" type="Timer" parent="CanvasLayer/MainOverlay/TopVBox/HighscoreLabel"]
+wait_time = 0.5
+
 [node name="MidVBox" type="VBoxContainer" parent="CanvasLayer/MainOverlay"]
 anchor_top = 0.5
 anchor_right = 1.0
