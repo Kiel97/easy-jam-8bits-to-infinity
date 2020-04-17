@@ -300,9 +300,32 @@ text = "2020 Kiel"
 
 [node name="Control" type="Control" parent="CanvasLayer/MainOverlay/BottomVBox/VertBox"]
 margin_left = 47.0
-margin_right = 96.0
+margin_right = 84.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
+
+[node name="MusicButton" type="TextureButton" parent="CanvasLayer/MainOverlay/BottomVBox/VertBox"]
+margin_left = 88.0
+margin_right = 96.0
+margin_bottom = 10.0
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MainOverlay/BottomVBox/VertBox/MusicButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 8 )
+text = "\\a"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CreditsButton" type="TextureButton" parent="CanvasLayer/MainOverlay/BottomVBox/VertBox"]
 margin_left = 100.0
@@ -450,7 +473,7 @@ stream = ExtResource( 12 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
-volume_db = -10.0
+volume_db = -4.0
 autoplay = true
 [connection signal="junk_collected" from="Bins/WhiteBin" to="." method="_on_Bin_junk_collected"]
 [connection signal="wrong_color" from="Bins/WhiteBin" to="." method="_on_Bin_wrong_color"]
@@ -462,6 +485,7 @@ autoplay = true
 [connection signal="wrong_color" from="Bins/GreenBin" to="." method="_on_Bin_wrong_color"]
 [connection signal="timeout" from="JunkGenerator/JunkTimer" to="." method="_on_JunkTimer_timeout"]
 [connection signal="pressed" from="CanvasLayer/MainOverlay/TapButton" to="." method="_on_TapButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainOverlay/BottomVBox/VertBox/MusicButton" to="." method="_on_MusicButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainOverlay/BottomVBox/VertBox/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="timeout" from="CanvasLayer/ScoreGameLabel/ScoreLabelTimer" to="." method="_on_ScoreLabelTimer_timeout"]
 [connection signal="pressed" from="CanvasLayer/CreditsOverlay/TapCreditsButton" to="." method="_on_TapCreditsButton_pressed"]

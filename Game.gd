@@ -150,3 +150,9 @@ func blink_highscore_label():
 		hiscore_label.visible = not hiscore_label.visible
 		blink_timer.start()
 		yield(blink_timer, "timeout")
+
+func _on_MusicButton_pressed():
+	if $Music.playing:
+		$Music.stop()
+	else:
+		$Music.play()
