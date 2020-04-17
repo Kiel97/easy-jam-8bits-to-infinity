@@ -67,3 +67,6 @@ func _on_Bin_shard_collected():
 
 func _on_Bin_wrong_color():
 	game_over()
+
+func _on_CreditsButton_pressed():
+	print("Show credits here...")
