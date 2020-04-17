@@ -112,6 +112,9 @@ func update_highscore():
 		highscore_file.open(highscore_path, File.WRITE)
 		highscore_file.store_string(str(highscore))
 		highscore_file.close()
+		$NewHighscoreSound.play()
+	else:
+		$WrongSound.play()
 	hiscore_label.text = "High: " + str(highscore)
 
 func _on_TapButton_pressed():
@@ -120,11 +123,10 @@ func _on_TapButton_pressed():
 
 func _on_Bin_shard_collected():
 	self.score += 1
-	$Bins/CollectedSound.play()
+	$CollectedSound.play()
 	print("Score: ", score)
 
 func _on_Bin_wrong_color():
-	$Bins/WrongSound.play()
 	game_over()
 
 func _on_CreditsButton_pressed():
