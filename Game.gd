@@ -15,14 +15,7 @@ func _ready():
 	$Player.visible = false
 
 func _on_JunkTimer_timeout():
-	spawn_point.offset = randi()
-	var junk = junks[randi() % junks.size()].instance()
-	$Junk.add_child(junk)
-	var direction = spawn_point.rotation + PI / 2
-	junk.position = spawn_point.position
-	direction += rand_range(-PI / 4, PI / 4)
-	junk.rotation = direction
-	junk.randomize_color()
+	spawn_random_junk()
 
 func playing(value):
 	is_playing = value
@@ -41,6 +34,16 @@ func new_game():
 	$Player.visible = true
 	self.is_playing = true
 	get_viewport().warp_mouse($Player.position)
+
+func spawn_random_junk():
+	spawn_point.offset = randi()
+	var junk = junks[randi() % junks.size()].instance()
+	$Junk.add_child(junk)
+	var direction = spawn_point.rotation + PI / 2
+	junk.position = spawn_point.position
+	direction += rand_range(-PI / 4, PI / 4)
+	junk.rotation = direction
+	junk.randomize_color()
 
 func game_over():
 	print("Game over")
