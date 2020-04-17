@@ -18,6 +18,8 @@ onready var title_label: Label = $CanvasLayer/TapOverlay/TopVBox/TitleLabel
 onready var score_label: Label = $CanvasLayer/TapOverlay/TopVBox/ScoreLabel
 onready var hiscore_label: Label = $CanvasLayer/TapOverlay/TopVBox/HighscoreLabel
 
+onready var credits_overlay: Control = $CanvasLayer/CreditsOverlay
+
 onready var score_game_label: Label = $CanvasLayer/ScoreGameLabel
 
 export var junks: Array = [load("res://Shard.tscn")]
@@ -119,10 +121,12 @@ func _on_Bin_wrong_color():
 	game_over()
 
 func _on_CreditsButton_pressed():
-	print("Show credits here...")
+	tap_overlay.visible = false
+	credits_overlay.visible = true
 
 func _on_ScoreLabelTimer_timeout():
 	hide_score()
 
 func _on_TapCreditsButton_pressed():
-	print("Go back to menu...")
+	credits_overlay.visible = false
+	tap_overlay.visible = true

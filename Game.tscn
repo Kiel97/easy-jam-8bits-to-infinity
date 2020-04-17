@@ -173,7 +173,6 @@ collision_mask = 7
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TapOverlay" type="Control" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -322,6 +321,7 @@ one_shot = true
 [node name="ScoreTween" type="Tween" parent="CanvasLayer/ScoreGameLabel"]
 
 [node name="CreditsOverlay" type="Control" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
