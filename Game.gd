@@ -11,12 +11,12 @@ onready var spawn_point: PathFollow2D = $JunkGenerator/JunkPath/JunkPathSpawner
 onready var junk_timer: Timer = $JunkGenerator/JunkTimer
 onready var score_timer: Timer = $CanvasLayer/ScoreGameLabel/ScoreLabelTimer
 
-onready var tap_overlay: Control = $CanvasLayer/TapOverlay
-onready var tap_button: TextureButton = $CanvasLayer/TapOverlay/TapButton
-onready var tap_label: Label = $CanvasLayer/TapOverlay/MidVBox/TapLabel
-onready var title_label: Label = $CanvasLayer/TapOverlay/TopVBox/TitleLabel
-onready var score_label: Label = $CanvasLayer/TapOverlay/TopVBox/ScoreLabel
-onready var hiscore_label: Label = $CanvasLayer/TapOverlay/TopVBox/HighscoreLabel
+onready var main_overlay: Control = $CanvasLayer/MainOverlay
+onready var tap_button: TextureButton = $CanvasLayer/MainOverlay/TapButton
+onready var tap_label: Label = $CanvasLayer/MainOverlay/MidVBox/TapLabel
+onready var title_label: Label = $CanvasLayer/MainOverlay/TopVBox/TitleLabel
+onready var score_label: Label = $CanvasLayer/MainOverlay/TopVBox/ScoreLabel
+onready var hiscore_label: Label = $CanvasLayer/MainOverlay/TopVBox/HighscoreLabel
 
 onready var credits_overlay: Control = $CanvasLayer/CreditsOverlay
 
@@ -49,7 +49,7 @@ func playing(value):
 
 func new_game():
 	self.is_playing = true
-	tap_overlay.visible = false
+	main_overlay.visible = false
 	for child in $Junk.get_children():
 		child.queue_free()
 	self.score = 0
@@ -85,7 +85,7 @@ func spawn_random_junk():
 func game_over():
 	print("Game over")
 	self.is_playing = false
-	tap_overlay.visible = true
+	main_overlay.visible = true
 	print("Your score is: ", score)
 	update_highscore()
 	score_label.text = "Score: " + str(score)
@@ -121,7 +121,7 @@ func _on_Bin_wrong_color():
 	game_over()
 
 func _on_CreditsButton_pressed():
-	tap_overlay.visible = false
+	main_overlay.visible = false
 	credits_overlay.visible = true
 
 func _on_ScoreLabelTimer_timeout():
@@ -129,4 +129,4 @@ func _on_ScoreLabelTimer_timeout():
 
 func _on_TapCreditsButton_pressed():
 	credits_overlay.visible = false
-	tap_overlay.visible = true
+	main_overlay.visible = true
