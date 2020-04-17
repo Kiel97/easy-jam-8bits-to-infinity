@@ -13,9 +13,11 @@ var AVAILABLE_COLORS = {
 
 var dormant_velocity: Vector2
 var dormant = true
+var during_game: bool
 
 func _ready():
 	randomize()
+	during_game = true
 	apply_random_impulse()
 
 func _integrate_forces(state):
@@ -58,5 +60,6 @@ func get_color() -> Color:
 	return Color(float(red), float(green), float(blue))
 
 func play_collision_sound():
-	$CollisionSound.pitch_scale = rand_range(0.8, 1.2)
-	$CollisionSound.play()
+	if (during_game):
+		$CollisionSound.pitch_scale = rand_range(0.8, 1.2)
+		$CollisionSound.play()

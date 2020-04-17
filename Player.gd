@@ -5,7 +5,7 @@ const ACC_FOLLOW_SPEED = 24
 
 var acc_y_correction = 0
 
-var is_physics_on = false
+var during_game = false
 var velocity
 
 export var red: bool = true setget set_red
@@ -15,7 +15,7 @@ export var blue: bool = true setget set_blue
 onready var os: String = OS.get_name()
 
 func _integrate_forces(state):
-	if (is_physics_on):
+	if (during_game):
 		if (os == 'Android' or os == 'iOS'):
 			var acc: Vector3 = Input.get_accelerometer()
 			state.linear_velocity = Vector2(acc.x, -(acc.y)) * ACC_FOLLOW_SPEED
@@ -46,4 +46,5 @@ func update_color():
 	$Sprite.modulate = Color(float(red), float(green), float(blue))
 
 func _on_Player_body_entered(body):
-	$BounceSound.play()
+	if (during_game):
+		$BounceSound.play()

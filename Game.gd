@@ -40,12 +40,12 @@ func playing(value):
 		junk_timer.autostart = false
 		#$Player.visible = false
 		junk_timer.stop()
-		$Player.is_physics_on = false
+		$Player.during_game = false
 	else:
 		junk_timer.autostart = true
 		#$Player.visible = true
 		junk_timer.start()
-		$Player.is_physics_on = true
+		$Player.during_game = true
 
 func new_game():
 	self.is_playing = true
@@ -88,6 +88,10 @@ func game_over():
 	main_overlay.visible = true
 	print("Your score is: ", score)
 	update_highscore()
+	
+	for junk in $Junk.get_children():
+		junk.during_game = false
+	
 	score_label.text = "Score: " + str(score)
 
 func load_highscore():
