@@ -13,3 +13,6 @@ data_*/
 
 # Built Executables
 builds/
+
+# Ignore extra files like Gimp's source image files
+ignore/
