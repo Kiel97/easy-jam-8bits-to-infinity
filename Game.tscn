@@ -421,29 +421,15 @@ margin_bottom = 103.0
 size_flags_vertical = 3
 theme = SubResource( 11 )
 custom_fonts/normal_font = SubResource( 12 )
-text = "This game was made by Kiel (Krzysztof Kielczewski) for Easy Jam (8-bits to Infinity) and uses assets:
+text = "Made by Kiel (Krzysztof Kielczewski) for Easy Jam (8-bits to Infinity) and uses these assets:
 
-- I pixel you Font by rodrigosrtz (https://www.dafont.com/i-pixel-u.font) - unknown license, but the website states it's 100% free
+- i Pixel u fonts by rodrigosrtz (free)
 
-- White Square 8x8 sprite by me during game jam
+- Kenney Mini font by Kenney (CC0)
 
-- Player 8x8 sprite by me during game jam
+- Sound effects by phoenix1291 from SFX: The Ultimate 2017 8 bit Mini pack (CC0)
 
-- Bin 8x8 sprite by me during game jam
-
-- Strips 8x8 sprite by me during game jam
-
-- Punch1__001.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license
-
-- Powerup__005.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license
-
-- Footstep1__005.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license
-
-- Powerup__007.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license
-
-- Bass Drum__004.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license
-
-- Explosion1__004.ogg from SFX: The Ultimate 2017 8 bit Mini pack available at OpenGameArt.org on CC0 license"
+- anything else made by Kiel"
 __meta__ = {
 "_edit_use_anchors_": false
 }
