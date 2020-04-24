@@ -33,6 +33,10 @@ func _ready():
 	assert(junks.size() >= 1)
 	$Music.play()
 
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 func _on_JunkTimer_timeout():
 	spawn_random_junk()
 
@@ -43,11 +47,13 @@ func playing(value):
 		#$Player.visible = false
 		junk_timer.stop()
 		$Player.during_game = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		junk_timer.autostart = true
 		#$Player.visible = true
 		junk_timer.start()
 		$Player.during_game = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 func new_game():
 	self.is_playing = true
