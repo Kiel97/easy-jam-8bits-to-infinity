@@ -421,7 +421,9 @@ margin_bottom = 103.0
 size_flags_vertical = 3
 theme = SubResource( 11 )
 custom_fonts/normal_font = SubResource( 12 )
-text = "Made by Kiel (Krzysztof Kielczewski) for Easy Jam (8-bits to Infinity) and uses these assets:
+text = "GC (v.1.1 post jam)
+
+Made by Kiel (Krzysztof Kielczewski) for Easy Jam (8-bits to Infinity) and uses these assets:
 
 - i Pixel u fonts by rodrigosrtz (free)
 
