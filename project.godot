@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="GC"
 config/description="Game made for Easy Jam (8-bits to Infinity) by Krzysztof Kiełczewski (Kieł). 10-17 April 2020"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://Scenes/Game/Game.tscn"
 config/icon="res://icon.png"
 
 [display]

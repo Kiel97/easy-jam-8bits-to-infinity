@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/NewHiScore.ogg-aad24cdc2d6cb1500c35354174a67abf.oggstr"
+
+[deps]
+
+source_file="res://Assets/SFX/NewHiScore.ogg"
+dest_files=[ "res://.import/NewHiScore.ogg-aad24cdc2d6cb1500c35354174a67abf.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
