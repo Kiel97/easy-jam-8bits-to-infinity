@@ -51,12 +51,16 @@ func playing(value):
 		junk_timer.stop()
 		$Player.during_game = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		for bin in $Bins.get_children():
+			bin.active = false
 	else:
 		junk_timer.autostart = true
 		#$Player.visible = true
 		junk_timer.start()
 		$Player.during_game = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		for bin in $Bins.get_children():
+			bin.active = true
 
 func new_game():
 	self.is_playing = true
