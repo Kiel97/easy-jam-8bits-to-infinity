@@ -27,6 +27,9 @@ export var junks: Array = [load("res://Scenes/Junk/Junk.tscn")]
 
 func _ready():
 	randomize()
+	score_game_label.visible = false
+	credits_overlay.visible = false
+	main_overlay.visible = true
 	self.is_playing = false
 	print(OS.get_user_data_dir())
 	load_highscore()
