@@ -105,23 +105,24 @@ junks = [ ExtResource( 3 ) ]
 
 [node name="BlueBin" parent="Bins" instance=ExtResource( 4 )]
 modulate = Color( 0, 0, 1, 1 )
-position = Vector2( 104, 4 )
+position = Vector2( 102, 6 )
 red = false
 green = false
 
 [node name="RedBin" parent="Bins" instance=ExtResource( 4 )]
 modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 104, 188 )
+position = Vector2( 102, 186 )
 green = false
 blue = false
 
 [node name="GreenBin" parent="Bins" instance=ExtResource( 4 )]
 modulate = Color( 0, 1, 0, 1 )
-position = Vector2( 4, 188 )
+position = Vector2( 6, 186 )
 red = false
 blue = false
 
 [node name="Borders" type="Node2D" parent="."]
+visible = false
 
 [node name="NorthBorder" type="StaticBody2D" parent="Borders"]
 position = Vector2( 56, -20 )
