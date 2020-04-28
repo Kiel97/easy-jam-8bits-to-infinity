@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Game/Game.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Junk/JunkDiamond.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Bin/Bin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Images/square8x8.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Junk/JunkTriangle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Credits Themes/white_slider.tres" type="StyleBox" id=7]
 [ext_resource path="res://Assets/Credits Themes/black_background.tres" type="StyleBox" id=8]
 [ext_resource path="res://Assets/SFX/Collected.ogg" type="AudioStream" id=9]
@@ -49,7 +50,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-junks = [ ExtResource( 3 ) ]
+junks = [ ExtResource( 3 ), ExtResource( 6 ) ]
 
 [node name="Bins" type="Node2D" parent="."]
 

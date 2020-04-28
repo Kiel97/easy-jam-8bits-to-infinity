@@ -4,10 +4,6 @@
 [ext_resource path="res://Scenes/Junk/Junk.gd" type="Script" id=2]
 [ext_resource path="res://Assets/SFX/Collision.ogg" type="AudioStream" id=3]
 
-
-
-
-
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
 bounce = 0.6
