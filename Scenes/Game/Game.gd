@@ -23,7 +23,7 @@ onready var credits_overlay: Control = $CanvasLayer/CreditsOverlay
 
 onready var score_game_label: Label = $CanvasLayer/ScoreGameLabel
 
-export var junks: Array = [load("res://Scenes/Junk/Junk.tscn")]
+export var junks: Array = [load("res://Scenes/Junk/JunkDiamond.tscn")]
 
 func _ready():
 	randomize()
