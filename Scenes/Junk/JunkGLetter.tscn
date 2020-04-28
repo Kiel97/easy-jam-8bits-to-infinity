@@ -5,10 +5,10 @@
 [node name="JunkGLetter" instance=ExtResource( 1 )]
 
 [node name="Polygon2D" parent="." index="0"]
-position = Vector2( 0, 2 )
+position = Vector2( 0, 3 )
 texture_scale = Vector2( 4, 4 )
 polygon = PoolVector2Array( 2, -8, -2, -8, -4, -6, -4, 0, -2, 2, 0, 2, 2, 2, 4, 0, 4, -2, 2, -4, 0, -2, 2, 0, -2, 0, -2, -6, 4, -6 )
 
 [node name="CollisionPolygon2D" parent="." index="1"]
-position = Vector2( 0, 2 )
+position = Vector2( 0, 3 )
 polygon = PoolVector2Array( 2, -8, -2, -8, -4, -6, -4, 0, -2, 2, 2, 2, 4, 0, 4, -2.0836, 2, -4, 0, -2, 2, 0, -2, 0, -2, -6, 4, -6 )
