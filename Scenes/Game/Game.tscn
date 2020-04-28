@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Game/Game.gd" type="Script" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://Assets/Fonts/Presets/BigScoreFont.tres" type="DynamicFont" id=20]
 [ext_resource path="res://Assets/Fonts/Presets/CreditsTitleFont.tres" type="DynamicFont" id=21]
 [ext_resource path="res://Assets/Fonts/Presets/CreditsTextFont.tres" type="DynamicFont" id=22]
+[ext_resource path="res://Scenes/Junk/JunkSquare.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/Junk/JunkRectangle.tscn" type="PackedScene" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80, 20 )
@@ -50,7 +52,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-junks = [ ExtResource( 3 ), ExtResource( 6 ) ]
+junks = [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 23 ), ExtResource( 24 ) ]
 
 [node name="Bins" type="Node2D" parent="."]
 
