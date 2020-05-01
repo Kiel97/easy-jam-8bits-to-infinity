@@ -146,9 +146,6 @@ rotation = 1.5708
 
 [node name="Junk" type="Node2D" parent="."]
 
-[node name="JunkTrapezoid" parent="Junk" instance=ExtResource( 25 )]
-position = Vector2( 48, 76 )
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 collision_mask = 7
 
