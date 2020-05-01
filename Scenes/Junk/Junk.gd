@@ -3,6 +3,7 @@ extends RigidBody2D
 export var red: bool = true setget set_red
 export var green: bool = true setget set_green
 export var blue: bool = true setget set_blue
+export var textures_pool: Array = [load("res://Assets/Images/junk1.png")]
 
 var AVAILABLE_COLORS = {
 	"Red": [1, 0, 0],
@@ -17,8 +18,15 @@ var during_game: bool
 
 func _ready():
 	randomize()
+	assert(textures_pool.size() >= 1)
 	during_game = true
+	choose_random_texture()
 	apply_random_impulse()
+
+func choose_random_texture(active: bool = true):
+	if active:
+		var texture = textures_pool[randi() % textures_pool.size()]
+		$Polygon2D.texture = texture
 
 func _integrate_forces(state):
 	if not dormant:
