@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Game/Game.gd" type="Script" id=2]
@@ -25,7 +25,6 @@
 [ext_resource path="res://Scenes/Junk/JunkSquare.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Scenes/Junk/JunkRectangle.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Scenes/Junk/JunkTrapezoid.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Scenes/Junk/JunkArrow.tscn" type="PackedScene" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80, 20 )
@@ -54,7 +53,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-junks = [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 25 ) ]
+junks = [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ]
 
 [node name="Bins" type="Node2D" parent="."]
 
