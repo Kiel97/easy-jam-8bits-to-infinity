@@ -9,25 +9,24 @@ export var blue: bool = true setget set_blue
 
 var active: bool = true
 
-func _on_Bin_body_entered(body):
+func _on_Bin_body_entered(body: Node2D):
 	if active:
-		if body.is_in_group("junk"):
-			if body.get_color() == $Sprite.modulate and not body.dormant:
+		if body.is_in_group("junk") and not body.dormant:
+			if body.get_color() == $Sprite.modulate:
 				emit_signal("junk_collected")
-				body.queue_free()
-			elif not body.dormant:
+			else:
 				emit_signal("wrong_color")
-				body.queue_free()
+			body.queue_free()
 
-func set_red(value):
+func set_red(value: bool):
 	red = value
 	call_deferred("update_color")
 
-func set_green(value):
+func set_green(value: bool):
 	green = value
 	call_deferred("update_color")
 
-func set_blue(value):
+func set_blue(value: bool):
 	blue = value
 	call_deferred("update_color")
 
