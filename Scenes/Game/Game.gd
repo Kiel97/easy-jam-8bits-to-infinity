@@ -31,7 +31,6 @@ func _ready():
 	credits_overlay.visible = false
 	main_overlay.visible = true
 	self.is_playing = false
-	print(OS.get_user_data_dir())
 	load_highscore()
 	assert(junks.size() >= 1)
 	$Music.play()
@@ -98,10 +97,8 @@ func spawn_random_junk():
 	junk.randomize_color()
 
 func game_over():
-	print("Game over")
 	self.is_playing = false
 	main_overlay.visible = true
-	print("Your score is: ", score)
 	update_highscore()
 	
 	for junk in $Junk.get_children():
@@ -140,7 +137,6 @@ func _on_TapButton_pressed():
 func _on_Bin_junk_collected():
 	self.score += 1
 	$CollectedSound.play()
-	print("Score: ", score)
 
 func _on_Bin_wrong_color():
 	game_over()
