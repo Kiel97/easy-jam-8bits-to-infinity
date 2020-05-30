@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Junk",
 "language": "GDScript",
 "path": "res://Scenes/Junk/Junk.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scenes/Player/Player.gd"
 } ]
 _global_script_class_icons={
 "Bin": "",
-"Junk": ""
+"Junk": "",
+"Player": ""
 }
 
 [application]

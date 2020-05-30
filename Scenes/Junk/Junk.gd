@@ -1,72 +1,75 @@
+class_name Junk
 extends RigidBody2D
 
-export var red: bool = true setget set_red
-export var green: bool = true setget set_green
-export var blue: bool = true setget set_blue
-export var textures_pool: Array = [load("res://Assets/Images/junk1.png")]
-
-var AVAILABLE_COLORS = {
+const COLORS : Dictionary = {
 	"Red": [1, 0, 0],
 	"Green": [0, 1, 0],
 	"Blue": [0, 0, 1],
 	"White": [1, 1, 1]
 }
 
-var dormant_velocity: Vector2
-var dormant = true
+export var red: bool = true setget _set_red
+export var green: bool = true setget _set_green
+export var blue: bool = true setget _set_blue
+export var textures_pool: Array = [load("res://Assets/Images/junk1.png")]
+
+var dormant: bool = true
 var during_game: bool
+
+onready var polygon2D := $Polygon2D as Polygon2D
+onready var collision_sfx := $CollisionSound as AudioStreamPlayer
 
 func _ready():
 	randomize()
 	assert(textures_pool.size() >= 1)
 	during_game = true
-	choose_random_texture()
-	apply_random_impulse()
+	_choose_random_texture()
+	_apply_random_impulse()
 
-func choose_random_texture(active: bool = true):
-	if active:
-		var texture = textures_pool[randi() % textures_pool.size()]
-		$Polygon2D.texture = texture
-
-func _integrate_forces(state):
+func _integrate_forces(state: Physics2DDirectBodyState):
 	if not dormant:
 		if state.linear_velocity.length() < 10:
 			dormant = true
-			apply_random_impulse()
-
-func _on_Junk_body_entered(body: Node2D):
-	play_collision_sound()
-	if body.is_in_group("player") and dormant:
-		dormant = false
-
-func set_red(value):
-	red = value
-	call_deferred("update_color")
-
-func set_green(value):
-	green = value
-	call_deferred("update_color")
-
-func set_blue(value):
-	blue = value
-	call_deferred("update_color")
-
-func update_color():
-	$Polygon2D.modulate = Color(float(red), float(green), float(blue))
-
-func apply_random_impulse():
-	apply_impulse(Vector2(), Vector2(rand_range(-45,45), rand_range(-45,45)))
-
-func randomize_color():
-	var chosen = AVAILABLE_COLORS.values()[randi() % AVAILABLE_COLORS.size()]
-	self.red = chosen[0]
-	self.green = chosen[1]
-	self.blue = chosen[2]
+			_apply_random_impulse()
 
 func get_color() -> Color:
 	return Color(float(red), float(green), float(blue))
 
-func play_collision_sound():
+func randomize_color():
+	var chosen_color: Array = COLORS.values()[randi() % COLORS.size()]
+	self.red = bool(chosen_color[0])
+	self.green = bool(chosen_color[1])
+	self.blue = bool(chosen_color[2])
+
+func _apply_random_impulse():
+	apply_impulse(Vector2(), Vector2(rand_range(-45,45), rand_range(-45,45)))
+
+func _choose_random_texture(active: bool = true):
+	if active:
+		var texture := textures_pool[randi() % textures_pool.size()] as Texture
+		polygon2D.texture = texture
+
+func _play_collision_sound():
 	if (during_game):
-		$CollisionSound.pitch_scale = rand_range(0.8, 1.2)
-		$CollisionSound.play()
+		collision_sfx.pitch_scale = rand_range(0.8, 1.2)
+		collision_sfx.play()
+
+func _set_red(value: bool):
+	red = value
+	call_deferred("_update_color")
+
+func _set_green(value: bool):
+	green = value
+	call_deferred("_update_color")
+
+func _set_blue(value: bool):
+	blue = value
+	call_deferred("_update_color")
+
+func _update_color():
+	polygon2D.modulate = Color(float(red), float(green), float(blue))
+
+func _on_Junk_body_entered(body: Node2D):
+	_play_collision_sound()
+	if body.is_in_group("player") and dormant:
+		dormant = false
