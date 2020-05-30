@@ -37,6 +37,10 @@ config/description="Game made for Easy Jam (8-bits to Infinity) by Krzysztof Kie
 run/main_scene="res://Scenes/Game/Game.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/treat_warnings_as_errors=true
+
 [display]
 
 window/size/width=108

@@ -9,7 +9,7 @@ var _blinks_new_score: int = 6
 var _highscore: int = 0
 var _highscore_file: File = File.new()
 var _highscore_path: String = "user://gchiscore.txt"
-
+var _err: int setget _set_error_code
 var _score_string: String = "Score: %d"
 var _highscore_string: String = "High: %d"
 
@@ -52,7 +52,7 @@ func _ready():
 	_load_highscore()
 	music.play()
 
-func _process(delta):
+func _process(_delta: float):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif Input.is_mouse_button_pressed(BUTTON_LEFT) and _is_playing:
@@ -113,13 +113,15 @@ func _hide_score():
 
 func _load_highscore():
 	#print(OS.get_user_data_dir()) # Highscore file is saved in this directory
+		
+	self._err = ERR_PRINTER_ON_FIRE
 	if not _highscore_file.file_exists(_highscore_path):
 		_highscore = 0
-		_highscore_file.open(_highscore_path, File.WRITE)
+		self._err = _highscore_file.open(_highscore_path, File.WRITE)
 		_highscore_file.store_string(str(_highscore))
 		_highscore_file.close()
 	
-	_highscore_file.open(_highscore_path, File.READ)
+	self._err = _highscore_file.open(_highscore_path, File.READ)
 	_highscore = int(_highscore_file.get_as_text())
 	_highscore_file.close()
 	
@@ -128,8 +130,7 @@ func _load_highscore():
 func _update_highscore():
 	if _score > _highscore:
 		_highscore = _score
-		
-		_highscore_file.open(_highscore_path, File.WRITE)
+		self._err = _highscore_file.open(_highscore_path, File.WRITE)
 		_highscore_file.store_string(str(_highscore))
 		_highscore_file.close()
 		
@@ -153,10 +154,16 @@ func _deactivate_junks():
 		junk.during_game = false
 
 func _blink_highscore_label():
-	for i in range(_blinks_new_score):
+	for _i in range(_blinks_new_score):
 		hiscore_label.visible = not hiscore_label.visible
 		blink_timer.start()
 		yield(blink_timer, "timeout")
+
+func _set_error_code(error_code: int):
+	_err = error_code
+	if error_code:
+		print_stack()
+		printerr("Error code: ", error_code)
 
 func _on_Bin_junk_collected():
 	self._score += 1
