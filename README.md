@@ -9,4 +9,7 @@ You can play this game not only on Android device. On Windows and HTML you can c
 
 Despite having prototype of controls from beginning of game jam (10th April), I started working hard on this game just 25 hours before deadline (16th and 17th April of 2020). Like I said, I had Android device and accelerometer-based controls on back of my head before start of game jam. To sum up, I spent about 15 hours developing this game during jam.
 
-This was made with Godot Engine 3.2.1, Bosca Ceoil and GIMP
+This was made with Godot Engine 3.2.1, Bosca Ceoil and GIMP.
+
+![](preview1.png)
+![](preview2.png)
