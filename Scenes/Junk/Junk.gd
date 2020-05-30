@@ -31,7 +31,6 @@ func choose_random_texture(active: bool = true):
 func _integrate_forces(state):
 	if not dormant:
 		if state.linear_velocity.length() < 10:
-			print("Dormant")
 			dormant = true
 			apply_random_impulse()
 
