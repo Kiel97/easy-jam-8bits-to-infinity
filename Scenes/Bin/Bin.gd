@@ -1,31 +1,31 @@
 class_name Bin
 extends Area2D
 
-signal junk_collected
-signal wrong_color
+signal junk_collected()
+signal wrong_color()
 
-export var red: bool = true setget set_red
-export var green: bool = true setget set_green
-export var blue: bool = true setget set_blue
+export var red: bool = true setget _set_red
+export var green: bool = true setget _set_green
+export var blue: bool = true setget _set_blue
 
 var active: bool = true
 
 onready var sprite := $Sprite as Sprite
 
-func update_color():
+func _update_color():
 	sprite.modulate = Color(float(red), float(green), float(blue))
 
-func set_red(value: bool):
+func _set_red(value: bool):
 	red = value
-	call_deferred("update_color")
+	call_deferred("_update_color")
 
-func set_green(value: bool):
+func _set_green(value: bool):
 	green = value
-	call_deferred("update_color")
+	call_deferred("_update_color")
 
-func set_blue(value: bool):
+func _set_blue(value: bool):
 	blue = value
-	call_deferred("update_color")
+	call_deferred("_update_color")
 
 func _on_Bin_body_entered(body: Node2D):
 	if active:
