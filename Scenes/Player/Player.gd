@@ -13,7 +13,7 @@ var during_game: bool = false
 var _velocity: Vector2
 var _acc_y_correction: float = 0.0
 
-onready var os: String = OS.get_name()
+onready var os_name: String = OS.get_name()
 onready var sprite := $Sprite as Sprite
 onready var bounce_sfx := $BounceSound as AudioStreamPlayer
 
@@ -34,7 +34,7 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 		state.linear_velocity = Vector2.ZERO
 
 func _is_mobile_device():
-	return os in ['Android', 'iOS']
+	return os_name in ['Android', 'iOS']
 		
 func _set_red(value: bool):
 	red = value
