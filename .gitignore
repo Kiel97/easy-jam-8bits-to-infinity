@@ -16,3 +16,6 @@ builds/
 
 # Ignore extra files like Gimp's source image files
 ignore/
+
+# Ignore custom android templates
+android/
