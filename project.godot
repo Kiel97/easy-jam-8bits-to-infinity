@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Bin",
+"language": "GDScript",
+"path": "res://Scenes/Bin/Bin.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Junk",
+"language": "GDScript",
+"path": "res://Scenes/Junk/Junk.gd"
+} ]
 _global_script_class_icons={
-
+"Bin": "",
+"Junk": ""
 }
 
 [application]
