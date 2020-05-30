@@ -42,13 +42,14 @@ onready var junk_container := $Junk as Node2D
 onready var bin_container := $Bins as Node2D
 
 func _ready():
+	assert(junks.size() >= 1)
 	randomize()
+	
+	self._is_playing = false
 	score_game_label.visible = false
 	credits_overlay.visible = false
-	main_overlay.visible = true
-	self._is_playing = false
+	
 	_load_highscore()
-	assert(junks.size() >= 1)
 	music.play()
 
 func _process(delta):
@@ -59,24 +60,22 @@ func _process(delta):
 
 func _set_playing_state(value: bool):
 	_is_playing = value
-	if not _is_playing:
-		junk_timer.autostart = false
-		junk_timer.stop()
-		player.during_game = false
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		_set_bins_status(false)
-	else:
-		junk_timer.autostart = true
+	
+	junk_timer.autostart = value
+	player.during_game = value
+	main_overlay.visible = not value
+	_set_bins_status(value)
+	
+	if _is_playing:
 		junk_timer.start()
-		player.during_game = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-		_set_bins_status(true)
+	else:
+		junk_timer.stop()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _new_game():
-	for junk in junk_container.get_children():
-		junk.queue_free()
 	self._score = 0
-	main_overlay.visible = false
+	_delete_junks()
 	get_viewport().warp_mouse(player.position)
 	self._is_playing = true
 
@@ -94,11 +93,8 @@ func _spawn_random_junk():
 
 func _game_over():
 	self._is_playing = false
-	main_overlay.visible = true
 	_update_highscore()
-	
-	for junk in junk_container.get_children():
-		junk.during_game = false
+	_deactivate_junks()
 	
 	score_label.text = _score_string % _score
 
@@ -116,6 +112,7 @@ func _hide_score():
 	score_game_label.visible = false
 
 func _load_highscore():
+	#print(OS.get_user_data_dir()) # Highscore file is saved in this directory
 	if not _highscore_file.file_exists(_highscore_path):
 		_highscore = 0
 		_highscore_file.open(_highscore_path, File.WRITE)
@@ -146,6 +143,14 @@ func _update_highscore():
 func _set_bins_status(status: bool):
 	for bin in bin_container.get_children():
 		bin.active = status
+
+func _delete_junks():
+	for junk in junk_container.get_children():
+		junk.queue_free()
+
+func _deactivate_junks():
+	for junk in junk_container.get_children():
+		junk.during_game = false
 
 func _blink_highscore_label():
 	for i in range(_blinks_new_score):
